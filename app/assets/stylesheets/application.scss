@@ -13,5 +13,94 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
 
- @import 'bootstrap';
+body {
+  font-family: Lato, sans-serif;
+}
+
+footer {
+  border-top: solid #ff7264 0.25rem;
+  margin-top: auto;
+}
+
+a {
+  color: #ff7264;
+}
+
+a:hover {
+  color: #505ac7;
+}
+
+#user-info {
+  margin-left: auto;
+}
+
+.errors {
+  background-color: lightcoral;
+}
+
+.page-item,
+ul.pagination a {
+  color: #303030;
+}
+
+li.page-item.active {
+  background-color: #ff7264;
+  border-color: #ff7264;
+  color: white;
+}
+
+.btn a {
+  color: white;
+  text-decoration: none;
+}
+
+.grid-col-1 {
+  background-color: #34373c !important;
+  color: white;
+}
+
+.table {
+  border-bottom: none !important;
+}
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+  border: none;
+}
+
+.btn-primary {
+  background-color: #ff7264;
+  border-color: #ff7264;
+}
+
+.btn-primary:hover {
+  background-color: #505ac7;
+  border-color: #505ac7;
+}
+
+.navbar {
+  border-bottom: solid #ff7264 0.25rem;
+}
+
+.errors {
+  background-color: lightcoral;
+}
+
+.text-muted a {
+  color: #ff7264 !important;
+  margin-left: 5px;
+  
+}
+
+#page-content {
+  flex: 1 0 auto;
+}
+
+.border-left {
+  border-left: solid #aaa 1px;
+}

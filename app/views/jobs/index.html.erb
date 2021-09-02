@@ -2,23 +2,17 @@
 
 <h1>Jobs</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @jobs.each do |job| %>
-      <tr>
-        <td><%= link_to 'Show', job %></td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="row">
+  <div class="col">
+    <% if @jobs.any? %>
+      
+      <%= render :partial => "job_grid", :locals => {:jobs => @jobs} %>
+     
+    <% else%>
+      <p>There are no jobs yet.</p>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
 <br>
 

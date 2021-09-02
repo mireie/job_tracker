@@ -1,16 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
   <head>
-    <title>JobTracker</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title><%= (yield(:title) + " | " unless yield(:title).blank?).to_s + "Job Tracker" %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.1"></script>
   </head>
-  <body>
-    <div class="container">
-      <%= yield %>
-    </div>
+  <body class="d-flex flex-column h-100">
+    <main class="flex-shrink-0">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">Job Tracker</a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <div id="user-info">
+                <% if current_user %>
+                  <%= link_to current_user.email, edit_user_registration_url %> | <%= link_to "Sign out", '/users/sign_out', :method => :delete %>
+                <% else %>
+                  <%= link_to "Sign up", '/users/sign_up' %> | <%= link_to "Sign in", '/users/sign_in'%>
+                <% end %>
+                <% if current_user && current_user.admin?%>
+                  <%= " | " %>
+                  <%= link_to 'User Management', '/user-admin/'%>
+                <%end %>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <%if flash[:alert] %>
+          <div class="alert alert-danger mt-3" role="alert">
+            <%= flash[:alert] %>
+          </div>
+        <%end%>
+        <%if flash[:notice] %>
+          <div class="alert alert-success mt-3" role="alert">
+            <%= flash[:notice] %>
+          </div>
+        <%end%>
+        <div class="row">
+          <div class="col mt-3">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer mt-auto py-3 bg-light" id="sticky-footer">
+      <div class="container">
+        <span class="text-muted" style="display:flex">Made by <a href="https://github.com/mireie">Michael Reiersgaard</a><span style="margin-left:auto"><a href="https://github.com/mireie/job_tracker">View project on GitHub</a></span></span>
+      </div>
+    </footer>
   </body>
 </html>
