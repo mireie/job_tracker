@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <h1 class="display-1">Jobs</h1>
 <h2>Active Applications</h2>
 <div class="row">
@@ -22,6 +21,6 @@
   </div>
 </div>
 <br>
-<% if current_user.admin %>
+<% if current_user && current_user.admin %>
   <%= link_to 'New Job', new_job_path %>
 <% end %>
