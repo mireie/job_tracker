@@ -1,12 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Jobs</h1>
+<h1 class="display-1">Jobs</h1>
+<h2>Active Applications</h2>
+<div class="row">
+  <div class="col">
+    <% if @jobs.any? %>
+      
+      <%= render :partial => "active_job_grid", :locals => {:jobs => @jobs} %>
+     
+    <% else%>
+      <p>There are no jobs yet.</p>
+    <% end %>
+  </div>
+</div>
+<hr>
+<h2>Inactive Applications</h2>
 
 <div class="row">
   <div class="col">
     <% if @jobs.any? %>
       
-      <%= render :partial => "job_grid", :locals => {:jobs => @jobs} %>
+      <%= render :partial => "inactive_job_grid", :locals => {:jobs => @jobs} %>
      
     <% else%>
       <p>There are no jobs yet.</p>
