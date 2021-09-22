@@ -25,10 +25,6 @@
                 <% else %>
                   <%= link_to "Sign up", '/users/sign_up' %> | <%= link_to "Sign in", '/users/sign_in'%>
                 <% end %>
-                <% if current_user && current_user.admin?%>
-                  <%= " | " %>
-                  <%= link_to 'User Management', '/user-admin/'%>
-                <%end %>
               </div>
             </div>
           </div>
