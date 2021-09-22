@@ -8,12 +8,9 @@
 
 1. Ruby v2.6.6
 2. Rails v6.1.4
-3. [NASA APOD](https://github.com/nasa/apod-api)
 4. Heroku
 5. Devise
 6. Bootstrap
-7. dotenv
-8. httpparty
 
 ## Description
 
@@ -42,6 +39,12 @@ An application to track job application progress.
 
 - To run the site on your local machine in the terminal run `rails s`
 - Open your browser and navigate to `localhost:3000` (default configuration)
+
+## Adding admins via the rails console
+* To add an admin you must use the rails console with `rails console`
+* Add the admin using the following format: `User.create(:email => "~your email~", :password => "~your password~", :admin => true)`
+* You will now be able to login as an admin on the website at `http://localhost:3000/users/sign_in`
+* You can also modify an existing user to make an admin with `rails c`. For a known `{user_id}`, run this command in the rails console: `User.find({user_id}).update(:admin => true)`
 
 ---
 
