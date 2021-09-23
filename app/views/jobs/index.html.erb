@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col">
     <% if @jobs.any? %>
-      <%= render :partial => "active_job_grid", :locals => {:jobs => @jobs} %>
+      <%= render :partial => "job_grid", :locals => {:jobs => @jobs.active} %>
     <% else%>
       <p>There are no jobs yet.</p>
     <% end %>
@@ -14,7 +14,7 @@
 <div class="row">
   <div class="col">
     <% if @jobs.any? %>
-      <%= render :partial => "inactive_job_grid", :locals => {:jobs => @jobs} %>
+      <%= render :partial => "job_grid", :locals => {:jobs => @jobs.inactive} %>
     <% else%>
       <p>There are no jobs yet.</p>
     <% end %>
