@@ -1,4 +1,15 @@
 <h1 class="display-1">Jobs</h1>
+<h2>Applications This Week</h2>
+<div class="row">
+  <div class="col">
+    <% if @jobs.any? %>
+      <%= render :partial => "job_grid", :locals => {:jobs => @jobs.recent} %>
+    <% else%>
+      <p>There are no jobs yet.</p>
+    <% end %>
+  </div>
+</div>
+<hr>
 <h2>Active Applications</h2>
 <div class="row">
   <div class="col">
