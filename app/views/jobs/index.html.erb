@@ -1,11 +1,29 @@
-<h1 class="display-1">Jobs</h1>
-<h2>Applications This Week</h2>
 <div class="row">
   <div class="col">
-    <% if @jobs.recent.any? %>
-      <%= render :partial => "job_grid", :locals => {:jobs => @jobs.recent} %>
+    <h2 class="display-2">Recent Applications</h2>
+  </div>
+  <div class="col text-end align-self-center">
+    <% if current_user && current_user.admin %>
+      <div class="btn btn-primary"><%= link_to 'Add Job', new_job_path %></div>
+    <% end %>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col">
+    <h3>This Week</h3>
+    <% if @jobs.this_week.any? %>
+      <%= render :partial => "job_grid", :locals => {:jobs => @jobs.this_week} %>
     <% else%>
       <p>No applications this week! <%= link_to 'Get on it!', new_job_path %></p>
+    <% end %>
+  </div>
+  <div class="col">
+    <h3>Previous Week</h3>
+    <% if @jobs.last_week.any? %>
+      <%= render :partial => "job_grid", :locals => {:jobs => @jobs.last_week} %>
+    <% else%>
+      <p>No applications last week! <%= link_to 'Get on it!', new_job_path %></p>
     <% end %>
   </div>
 </div>
@@ -32,6 +50,3 @@
   </div>
 </div>
 <br>
-<% if current_user && current_user.admin %>
-  <%= link_to 'New Job', new_job_path %>
-<% end %>
