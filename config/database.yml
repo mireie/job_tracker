@@ -20,6 +20,8 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: <%= ENV['CA_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
@@ -32,12 +34,12 @@ development:
   #username: job_tracker
 
   # The password associated with the postgres role (username).
-  password: epicodus
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
-  #host: localhost
+  host: 127.0.0.1
+
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
@@ -58,7 +60,7 @@ development:
 test:
   <<: *default
   database: job_tracker_test
-  password: epicodus
+  host: 127.0.0.1
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
