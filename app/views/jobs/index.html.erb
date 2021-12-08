@@ -12,18 +12,20 @@
 <div class="row">
   <div class="col">
     <h3>This Week</h3>
+    <strong><%=pluralize(@jobs.this_week.count, 'application')%> this week!</strong>
     <% if @jobs.this_week.any? %>
       <%= render :partial => "job_grid", :locals => {:jobs => @jobs.this_week} %>
     <% else%>
-      <p>No applications this week! <%= link_to 'Get on it!', new_job_path %></p>
+      <p><%= link_to 'Get on it!', new_job_path %></p>
     <% end %>
   </div>
   <div class="col">
     <h3>Previous Week</h3>
+    <strong><%=pluralize(@jobs.last_week.count, 'application')%> last week!</strong>
     <% if @jobs.last_week.any? %>
       <%= render :partial => "job_grid", :locals => {:jobs => @jobs.last_week} %>
     <% else%>
-      <p>No applications last week! <%= link_to 'Get on it!', new_job_path %></p>
+      <p><%= link_to 'Get on it!', new_job_path %></p>
     <% end %>
   </div>
 </div>
