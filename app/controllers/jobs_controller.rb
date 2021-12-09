@@ -1,13 +1,13 @@
 class JobsController < ApplicationController
   before_action :set_job, only: %i[ show edit update destroy ]
   before_action :authorize_admin, only: [:new, :edit, :create]
-
-
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   
 
   # GET /jobs or /jobs.json
   def index
-    @jobs = Job.order(created_at: :desc)
+    user_signed_in? ? @jobs = current_user.jobs : @jobs = Job.none
+
   end
 
   # GET /jobs/1 or /jobs/1.json
@@ -25,7 +25,8 @@ class JobsController < ApplicationController
 
   # POST /jobs or /jobs.json
   def create
-    @job = Job.new(job_params)
+    @user = current_user
+    @job = @user.jobs.new(job_params)
 
     respond_to do |format|
       if @job.save
