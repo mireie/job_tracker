@@ -4,5 +4,7 @@ class Job < ApplicationRecord
   scope :this_week, -> { where("created_at >=?", Date.today.beginning_of_week)}
   scope :last_week, -> { where("created_at BETWEEN ? AND ?", Date.today.prev_occurring(:monday).prev_occurring(:monday), Date.today.beginning_of_week)}
 
+  validates :company, :title, :url, presence: true
+
   belongs_to :user
 end

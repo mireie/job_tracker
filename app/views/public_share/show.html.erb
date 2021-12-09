@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-auto">
-    <h2 class="display-2">Recent Applications</h2>
+    <h2 class="display-2">Recent Applications for <%=@user.full_name%></h2>
   </div>
   <div class="col text-end align-self-center">
     <% if current_user && current_user.admin %>
-      <div class="btn btn-primary"><%= link_to 'Add Job', new_job_path %></div>
+      <div class="btn btn-danger"><%= link_to 'Remove public share link', "/share/#{current_user.id}/remove" %></div>
     <% end %>
   </div>
 </div>
@@ -15,40 +15,25 @@
     <strong><%=pluralize(@jobs.this_week.count, 'application')%> this week!</strong>
     <% if @jobs.this_week.any? %>
       <%= render :partial => "jobs/job_grid", :locals => {:jobs => @jobs.this_week} %>
-    <% else%>
-      <p><%= link_to 'Get on it!', new_job_path %></p>
     <% end %>
   </div>
+</div>
+<hr>
+<div class="row">
   <div class="col">
     <h3>Previous Week</h3>
     <strong><%=pluralize(@jobs.last_week.count, 'application')%> last week!</strong>
     <% if @jobs.last_week.any? %>
       <%= render :partial => "jobs/job_grid", :locals => {:jobs => @jobs.last_week} %>
-    <% else%>
-      <p><%= link_to 'Get on it!', new_job_path %></p>
     <% end %>
   </div>
 </div>
 <hr>
-<h2>Active Applications</h2>
 <div class="row">
   <div class="col">
+    <h4>All Applicatons</h4>
+    <strong><%=pluralize(@jobs.count, 'application')%> total applications.</strong>
     <% if @jobs.any? %>
-      <%= render :partial => "jobs/job_grid", :locals => {:jobs => @jobs.active} %>
-    <% else%>
-      <p>There are no jobs yet.</p>
+      <%= render :partial => "jobs/job_grid", :locals => {:jobs => @jobs} %>
     <% end %>
   </div>
-</div>
-<hr>
-<h2>Inactive Applications</h2>
-<div class="row">
-  <div class="col">
-    <% if @jobs.any? %>
-      <%= render :partial => "jobs/job_grid", :locals => {:jobs => @jobs.inactive} %>
-    <% else%>
-      <p>There are no jobs yet.</p>
-    <% end %>
-  </div>
-</div>
-<br>
