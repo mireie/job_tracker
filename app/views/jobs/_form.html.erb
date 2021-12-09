@@ -32,7 +32,6 @@
         <%= f.date_field :response_date, class: "form-control" %>
         <%= f.label :status %>
         <%= f.select :status, options_for_select(["Applied", "Rejected", "Other"]), {:prompt => 'Select One'}, {:class => 'form-select'}%>
-        <%# <%= f.text_field  :status, class: "form-control" %>
       </div>
     </div>
     <%= f.submit class: 'btn btn-primary mt-3'%>
