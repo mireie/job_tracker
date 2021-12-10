@@ -12,6 +12,8 @@
   <div class="actions">
     <div class="row">
       <div class="col">
+        <%= f.label :title %>
+        <%= f.text_field  :title, class: "form-control" %>
         <%= f.label :company %>
         <%= f.text_field  :company, class: "form-control" %>
         <%= f.label :url %>
@@ -29,8 +31,6 @@
       </div>
       <% if !job.submission_date.nil? %>
         <div class="col">
-          <%= f.label :title %>
-          <%= f.text_field  :title, class: "form-control" %>
           <%= f.label :response_date %>
           <%= f.date_field :response_date, class: "form-control" %>
         </div>
