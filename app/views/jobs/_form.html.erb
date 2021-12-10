@@ -24,15 +24,17 @@
         <%= f.date_field  :submission_date, class: "form-control" %>
         <%= f.label :notes %>
         <%= f.text_area  :notes, class: "form-control" %>
-      </div>
-      <div class="col">
-        <%= f.label :title %>
-        <%= f.text_field  :title, class: "form-control" %>
-        <%= f.label :response_date %>
-        <%= f.date_field :response_date, class: "form-control" %>
         <%= f.label :status %>
         <%= f.select :status, options_for_select(["Applied", "Rejected", "Other"]), {:prompt => 'Select One'}, {:class => 'form-select'}%>
       </div>
+      <% if !job.submission_date.nil? %>
+        <div class="col">
+          <%= f.label :title %>
+          <%= f.text_field  :title, class: "form-control" %>
+          <%= f.label :response_date %>
+          <%= f.date_field :response_date, class: "form-control" %>
+        </div>
+      <% end %>
     </div>
     <%= f.submit class: 'btn btn-primary mt-3'%>
   </div>
