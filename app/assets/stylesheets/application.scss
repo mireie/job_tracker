@@ -108,3 +108,9 @@ th {
 th.grid-col-1 {
   color: white !important;
 }
+.bi {
+  color: #ff7264
+}
+#job-links a:not(:first-child):not(:last-child) {
+  padding: .5rem;
+}
