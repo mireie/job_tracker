@@ -1,0 +1,37 @@
+<div class="card job-card">
+  <div class="card-body">
+    <h5 class="card-title"><%=@job.title %></h5>
+    <h6 class="card-subtitle"><%=@job.company %></h6>
+    <div class="row">
+      <div class="col">
+        <p id="job-links">
+          <%=link_to @job.url do %>
+            <i class="bi bi-file-post-fill me-1"></i>Job Post
+          <% end %>
+          <%=link_to @job.resume_url do %>
+            <i class="bi bi-file-text-fill me-1"></i>Resume
+          <% end %>
+          <%=link_to @job.cover_letter_url do %>
+            <i class="bi bi-envelope-fill me-1"></i>Cover Letter
+          <% end %>
+        </p>
+        Submitted: <%=@job.submission_date.strftime("%B %d, %Y") %><br>
+        Response: <%= !@job.response_date.nil? ? "#{@job.response_date.strftime('%B %d, %Y')}" : 'No Response (yet!)'%>
+      </div>
+      <div class="col">
+        <strong>Notes</strong>
+        <p><%=@job.notes %></p>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="row">
+      <div class="col-6">
+        <strong>Status: <%=@job.status %></strong>
+      </div>
+      <div class="col-6 text-end">
+        <%=link_to 'Edit', edit_job_path(@job)%>
+      </div>
+    </div>
+  </div>
+</div>

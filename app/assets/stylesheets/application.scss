@@ -114,3 +114,11 @@ th.grid-col-1 {
 #job-links a:not(:first-child):not(:last-child) {
   padding: .5rem;
 }
+.app-counter-float {
+  float: right;
+}
+
+.job-card {
+  min-width: 500px;
+  margin-bottom:1rem;
+}
