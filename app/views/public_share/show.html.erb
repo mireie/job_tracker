@@ -3,7 +3,8 @@
     <h2 class="display-2">Recent Applications for <%=@user.full_name%></h2>
   </div>
   <div class="col text-end align-self-center">
-    <% if current_user && current_user.admin %>
+    <% if current_user %>
+      <%= link_to 'Return to Dashboard', :root, class: 'btn btn-primary' %>
       <div class="btn btn-danger"><%= link_to 'Remove public share link', "/share/#{current_user.id}/remove" %></div>
     <% end %>
   </div>
@@ -12,27 +13,41 @@
 <div class="row">
   <div class="col">
     <h3>This Week</h3>
-    <strong><%=pluralize(@jobs.this_week.count, 'application')%> this week!</strong>
     <% if @jobs.this_week.any? %>
-      <%= render :partial => "jobs/job_grid", :locals => {:jobs => @jobs.this_week} %>
-    <% end %>
+      <div class="row">
+        <% @jobs.this_week.each do |job| %>
+          <div class="col">
+            <%= render :partial => "jobs/job_card", :locals => {:@job => job} %>
+          </div>
+        <% end %>
+        </div>
+      <% else%>
+        <p><%= link_to 'Get on it!', new_job_path %></p>
+      <% end %>
   </div>
 </div>
 <hr>
 <div class="row">
   <div class="col">
     <h3>Previous Week</h3>
-    <strong><%=pluralize(@jobs.last_week.count, 'application')%> last week!</strong>
     <% if @jobs.last_week.any? %>
-      <%= render :partial => "jobs/job_grid", :locals => {:jobs => @jobs.last_week} %>
-    <% end %>
+      <div class="row">
+        <% @jobs.last_week.each do |job| %>
+          <div class="col">
+            <%= render :partial => "jobs/job_card", :locals => {:@job => job} %>
+          </div>
+        <% end %>
+        </div>
+      <% else%>
+        <p><%= link_to 'Get on it!', new_job_path %></p>
+      <% end %>
   </div>
 </div>
 <hr>
 <div class="row">
   <div class="col">
     <h4>All Applicatons</h4>
-    <strong><%=pluralize(@jobs.count, 'application')%> total applications.</strong>
+    <strong><%=pluralize(@jobs.count, 'application')%> total.</strong>
     <% if @jobs.any? %>
       <%= render :partial => "jobs/job_grid", :locals => {:jobs => @jobs} %>
     <% end %>
