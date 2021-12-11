@@ -1,0 +1,48 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/">Job Tracker</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <% if current_user %>
+        <ul class="nav me-auto">
+          <li class="nav-item">
+            <% if current_user && !current_user.token.nil?%>
+              <a class="nav-link link-dark" href="/share/<%= "#{current_user.id}/#{current_user.token}"%>">Public Link</a>
+            <% else %>
+              <%= link_to 'Create Public Share Link', "/share/#{current_user.id}/create", class: "nav-link link-dark" %>
+            <%end%>
+          </li>
+        </ul>
+      <%end%>
+      <ul class="nav" id="user-info">
+        <% if current_user %>
+          <li class="nav-item">
+            <%= link_to current_user.email, edit_user_registration_url, class: "nav-link link-dark" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign out", '/users/sign_out', :method => :delete, class: "nav-link link-dark" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign up", '/users/sign_up', class: "btn btn-primary me-3" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign in", '/users/sign_in', class: "btn btn-dark"%>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+<%if flash[:alert] %>
+  <div class="alert alert-danger mt-3" role="alert">
+    <%= flash[:alert] %>
+  </div>
+<%end%>
+<%if flash[:notice] %>
+  <div class="alert alert-success mt-3" role="alert">
+    <%= flash[:notice] %>
+  </div>
+<%end%>
