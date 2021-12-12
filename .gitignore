@@ -34,4 +34,4 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-service-worker.js*
+public/service-worker.js*
