@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+<nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="/">Job Tracker</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,10 +9,13 @@
         <ul class="nav me-auto">
           <li class="nav-item">
             <% if current_user && !current_user.token.nil?%>
-              <a class="nav-link link-dark" href="/share/<%= "#{current_user.id}/#{current_user.token}"%>">Public Link</a>
+              <a class="nav-link link-dark" href="/share/<%= "#{current_user.id}/#{current_user.token}"%>">Share Link</a>
             <% else %>
               <%= link_to 'Create Public Share Link', "/share/#{current_user.id}/create", class: "nav-link link-dark" %>
             <%end%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Add Job', new_job_path, class: 'btn btn-primary'%>
           </li>
         </ul>
       <%end%>
