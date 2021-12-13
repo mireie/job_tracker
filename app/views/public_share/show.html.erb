@@ -4,6 +4,7 @@
   </div>
   <div class="col text-end align-self-center">
     <% if current_user %>
+    <p>Public Link: <%= link_to share_show_url %></p>
       <div class="d-flex gap-3 justify-content-end">
         <%= link_to 'Return to Dashboard', :root, class: 'btn btn-primary' %>
         <%= link_to 'Remove public share link', "/share/#{current_user.id}/remove", class: 'btn btn-danger' %>
