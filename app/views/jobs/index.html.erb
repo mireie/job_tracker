@@ -21,10 +21,11 @@
       <h2 class="display-3">Quick Add</h2>
       <hr>
       <%= form_with url: "/jobs/quick-add", method: :get do |form| %>
-        <%= form.label :url, "Job posting URL", class: "form-label" %>
-        <%= form.text_field :url, class: 'form-control' %>
+        <%= form.label :url, "Job Posting URL:", class: "form-label" %>
+        <%= form.text_field :url, class: 'form-control', placeholder: 'https://example.com' %>
         <%= form.submit "Quick Add", class: 'btn btn-primary mt-3' %>
       <% end %>
+      <p class="text-muted small">Some of the larger sites will not allow for this method. Sorry.</p>
       <p class="text-muted small mt-3">
         Want to add jobs even more quickly?<br>
         <a data-bs-toggle="modal" data-bs-target="#bookmarkletModal">

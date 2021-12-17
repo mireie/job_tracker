@@ -59,6 +59,11 @@ class JobsController < ApplicationController
   end
 
   def quick_add
+    if params[:url].start_with?("https://www.linkedin.com")
+      @job = Job.new(title: "LinkedIn Job Posting", url: params[:url], submission_date: Date.today)
+      render :new
+      return
+    end
     if params[:url].present? && !params[:url].start_with?("https://")
       if params[:url].start_with?("http://")
         params[:url] = params[:url].sub("http://", "https://")
