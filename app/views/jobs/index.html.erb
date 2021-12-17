@@ -18,9 +18,13 @@
       </div>
     </div>
     <div class="col-4 d-none d-lg-block">
-      <h2 class="display-3">Add a Job</h2>
+      <h2 class="display-3">Quick Add</h2>
       <hr>
-      <%= render 'form', job: @job = current_user.jobs.new() %>
+      <%= form_with url: "/jobs/quick-add", method: :get do |form| %>
+        <%= form.label :url, "Job posting URL", class: "form-label" %>
+        <%= form.text_field :url, class: 'form-control' %>
+        <%= form.submit "Quick Add", class: 'btn btn-primary mt-3' %>
+      <% end %>
     </div>
   </div>
   <hr>
@@ -29,12 +33,12 @@
       <strong class="app-counter-float"><%=pluralize(@jobs.last_week.count, 'application')%> last week!</strong>
       <h3>Previous Week</h3>
       <% if @jobs.last_week.any? %>
-      <div class="row">
-        <% @jobs.last_week.each do |job| %>
-          <div class="col-md-6">
-            <%= render :partial => "jobs/job_card", :locals => {:@job => job} %>
-          </div>
-        <% end %>
+        <div class="row">
+          <% @jobs.last_week.each do |job| %>
+            <div class="col-md-6">
+              <%= render :partial => "jobs/job_card", :locals => {:@job => job} %>
+            </div>
+          <% end %>
         </div>
       <% else%>
         <p><%= link_to 'Get on it!', new_job_path %></p>

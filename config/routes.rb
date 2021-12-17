@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/show'
   resources :events
+  get 'jobs/quick-add', action: :quick_add, controller: 'jobs', as: 'quick_add'
   resources :jobs
 
   get '/share/:user/create', action: :create, controller: 'public_share', as: 'share_create'
