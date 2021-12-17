@@ -21,8 +21,12 @@
             <% end %>
           </div>
         </div>
-        <strong>Submitted:</strong> <%=@job.submission_date.strftime("%B %d, %Y") %><br>
-        <strong>Response:</strong> <%= !@job.response_date.nil? ? "#{@job.response_date.strftime('%B %d, %Y')}" : 'No Response (yet!)'%>
+        <strong>Submitted:<br>
+        </strong> <%= !@job.submission_date.nil? ? "#{@job.submission_date.strftime("%B %d, %Y")}" : 'Application not submitted (yet!)' %><br>
+        <% if !@job.submission_date.nil? %>
+          <strong>Response:<br>
+          </strong> <%= !@job.response_date.nil? ? "#{@job.response_date.strftime('%B %d, %Y')}" : 'No Response (yet!)'%>
+        <%end%>
       </div>
       <div class="col">
         <strong>Notes</strong>
