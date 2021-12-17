@@ -25,6 +25,12 @@
         <%= form.text_field :url, class: 'form-control' %>
         <%= form.submit "Quick Add", class: 'btn btn-primary mt-3' %>
       <% end %>
+      <p class="text-muted small mt-3">
+        Want to add jobs even more quickly?<br>
+        <a data-bs-toggle="modal" data-bs-target="#bookmarkletModal">
+          <strong >Add this bookmarklet!</strong>
+        </a>
+      </p>
     </div>
   </div>
   <hr>
@@ -69,3 +75,23 @@
 <% else %>
   <p>Please <%= link_to "Sign up", '/users/sign_up' %> or <%= link_to "Sign in", '/users/sign_in'%> to continue.</p>
 <% end %>
+<!-- Modal -->
+<div class="modal fade" id="bookmarkletModal" tabindex="-1" aria-labelledby="bookmarkletlabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bookmarkletModalLabel">Add Quick Add Bookmarklet</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Add this javascript to your bookmarks bar to easily add your current page as a job to the tracker!</p>
+        <pre><code>javascript: (() => { window.open(`https://mireie-job-tracker.herokuapp.com/quick-add?url=${window.location.href}`, %27_blank%27)})();</code></pre>
+        <%= image_tag "bookmarklet.png" %>
+        <span class="small">Note: you must be logged into the job tracker for it to add properly.</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
