@@ -27,7 +27,7 @@
         <%= f.label :notes %>
         <%= f.text_area  :notes, class: "form-control" %>
         <%= f.label :status %>
-        <%= f.select :status, options_for_select(["Applied", "Rejected", "Other"]), {:prompt => 'Select One'}, {:class => 'form-select'}%>
+        <%= f.select :status, options_for_select(["Applied", "Interviewing", "Declined", "Rejected", "Have Not Applied", "Ignored", "Other"]), {:prompt => 'Select One'}, {:class => 'form-select'}%>
       </div>
       <% if !job.submission_date.nil? %>
         <div class="col">
