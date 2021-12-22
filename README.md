@@ -40,11 +40,6 @@ An application to track job application progress.
 - To run the site on your local machine in the terminal run `rails s`
 - Open your browser and navigate to `localhost:3000` (default configuration)
 
-## Adding admins via the rails console
-* To add an admin you must use the rails console with `rails console`
-* Add the admin using the following format: `User.create(:email => "~your email~", :password => "~your password~", :admin => true)`
-* You will now be able to login as an admin on the website at `http://localhost:3000/users/sign_in`
-* You can also modify an existing user to make an admin with `rails c`. For a known `{user_id}`, run this command in the rails console: `User.find({user_id}).update(:admin => true)`
 
 ---
 
@@ -63,5 +58,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-I chose to take on this challenge with Ruby on Rails to deliver "Spacestagram"! utilizing NASA's Astronomy Picture Of The Day API. I wanted to go a little beyond the requirements to include basic user functionality so separate users can have their own likes which add to the total. I've included test account info on the login page, though a user can create their own account as well.
