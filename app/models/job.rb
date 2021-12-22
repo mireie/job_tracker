@@ -5,7 +5,7 @@ class Job < ApplicationRecord
   scope :inactive, -> { where.not(status: @@active_statuses) }
   scope :this_week, -> { where("submission_date >=?", Date.today.beginning_of_week)}
   scope :last_week, -> { where("submission_date BETWEEN ? AND ?", Date.today.prev_occurring(:monday).prev_occurring(:monday), Date.today.beginning_of_week)}
-  scope :ignored, -> { where(status: 'Applied')}
+  scope :ignored, -> { where(status: 'Applied').where("submission_date < ?", 1.month.ago) }
 
   validates :company, :title, :url, presence: true
 
