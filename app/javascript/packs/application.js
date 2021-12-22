@@ -12,7 +12,6 @@
 
 
 
-import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'bootstrap'
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
