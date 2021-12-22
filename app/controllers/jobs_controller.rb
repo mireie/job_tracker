@@ -78,6 +78,11 @@ class JobsController < ApplicationController
     redirect_to "/", alert: "Invalid URL. Error: #{e}"
   end
 
+  def ignore_old_jobs
+    current_user.jobs.ignored.update_all(status: 'Ignored')
+    redirect_to "/", notice: "Old jobs have been ignored."
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

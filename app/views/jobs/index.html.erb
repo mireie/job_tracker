@@ -53,6 +53,7 @@
     </div>
   </div>
   <h2>Active Applications</h2>
+  <%= button_to "Ignore old applications", jobs_ignore_old_jobs_path, method: :get, class: 'btn btn-warning' %>
   <div class="row">
     <div class="col">
       <% if @jobs.any? %>
