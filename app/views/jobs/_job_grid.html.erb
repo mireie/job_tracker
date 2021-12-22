@@ -10,7 +10,7 @@
         <th scope="col">Submission Date</th>
         <th scope="col">Response Date</th>
         <th scope="col">Status</th>
-        <% if current_user && current_user.admin %>
+        <% if current_user %>
           <th scope="col">Edit</th>
         <% end %>
       </tr>
@@ -38,7 +38,7 @@
             <%end%>
           </td>
           <td><%= job.status %></td>
-          <% if current_user && current_user.admin %>
+          <% if current_user %>
             <td><%= link_to "Edit", edit_job_path(job) %></td>
           <% end%>
         </tr>
