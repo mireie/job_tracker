@@ -6,8 +6,8 @@
 
 ## Technologies Used
 
-1. Ruby v2.6.6
-2. Rails v6.1.4
+1. Ruby v2.7.5
+2. Rails v6.1.4.1
 4. Heroku
 5. Devise
 6. Bootstrap
@@ -33,19 +33,18 @@ An application to track job application progress.
 - Update the `config/database.yml` file to match your PostgreSQL setup
 - Initialize the database with `rake db:create` and initialize tables with `rake db:migrate`
     - If you encounter errors here, your `database.yml` file is likely not set up correctly and you skipped the previous step!
-- Seed the database with products and reviews with the terminal command `rake db:seed`
+- Seed the database with users and jobs with the terminal command `rake db:seed`
 
 ## Running the Application
 
 - To run the site on your local machine in the terminal run `rails s`
 - Open your browser and navigate to `localhost:3000` (default configuration)
 
-
 ---
 
 ## Known Bugs
 
-- Please open a pull request if you have any issues!
+- Please [open an issue](https://github.com/mireie/job_tracker/issues/new/choose) if you encounter any issues!
 
 ## License
 
