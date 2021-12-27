@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :events
   get "jobs/quick-add", action: :quick_add, controller: "jobs"
   get "jobs/ignore-old-jobs", action: :ignore_old_jobs, controller: "jobs"
-  resources :jobs
+  resources :jobs do
+    resources :notes
+  end
 
   get "/share/:user/create", action: :create, controller: "public_share", as: "share_create"
   get "/share/:user/remove", action: :remove, controller: "public_share", as: "share_remove"
