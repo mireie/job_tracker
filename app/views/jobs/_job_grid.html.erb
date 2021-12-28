@@ -28,7 +28,17 @@
             <%end%>
           </td>
           <td><a href="<%=job.resume_url%>" target="_blank">Resume</a></td>
-          <td><%= job.notes %></td>
+          <td><% if job.notes.any?%>
+          <ul>
+            <%job.notes.limit(3).each do |note| %>
+              <li><strong><%=note.created_at.strftime('%b %d, %Y') %>:</strong> <%=note.content%></li>
+            <%end%>
+          </ul>
+        <% else %>
+          <p>No notes yet!</p>
+        <%end%>
+                <%=link_to 'Add Note', new_job_note_path(@job)%>
+</td>
           <td><%= job.submission_date %></td>
           <td>
             <% if job.response_date %>
