@@ -1,0 +1,15 @@
+<strong>Notes</strong>
+<% if @job.notes.any?%>
+  <ul>
+    <%@job.notes.limit(3).each do |note| %>
+      <li><strong><%=note.created_at.strftime('%b %d, %Y') %>:</strong> <%=note.content%></li>
+    <%end%>
+  </ul>
+  <% if @job.notes.count > 3 %>
+    <%= link_to "See all #{@job.notes.count} notes", job_path(@job) %>
+    <br>
+  <% end %>
+<% else %>
+  <p>No notes yet!</p>
+<%end%>
+<%=link_to 'Add Note', new_job_note_path(@job)%>

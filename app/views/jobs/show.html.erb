@@ -1,1 +1,17 @@
-<%= render :partial => "jobs/job_card" %>
+<%= link_to '<< Back', url_for(:back) %>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= render :partial => "jobs/job_card" %>
+  </div>
+  <div class="col">
+    <% if @job.notes.any?%>
+    <h2>Notes</h2>
+      <ul>
+        <%@job.notes.each do |note| %>
+          <li><strong><%=note.created_at.strftime('%b %d, %Y') %>:</strong> <%=note.content%></li>
+        <%end%>
+      </ul>
+    <%end%>
+  </div>
+</div>

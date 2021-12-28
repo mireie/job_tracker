@@ -1,6 +1,6 @@
 <div class="card job-card">
   <div class="card-body">
-    <h5 class="card-title"><%=@job.title %></h5>
+    <h5 class="card-title"><%=link_to @job.title, job_path(@job) %></h5>
     <h6 class="card-subtitle"><%=@job.company %></h6>
     <div class="row">
       <div class="col-6">
@@ -29,17 +29,7 @@
         <%end%>
       </div>
       <div class="col">
-        <strong>Notes</strong>
-        <% if @job.notes.any?%>
-          <ul>
-            <%@job.notes.limit(3).each do |note| %>
-              <li><strong><%=note.created_at.strftime('%b %d, %Y') %>:</strong> <%=note.content%></li>
-            <%end%>
-          </ul>
-        <% else %>
-          <p>No notes yet!</p>
-        <%end%>
-        <%=link_to 'Add Note', new_job_note_path(@job)%>
+        <%= render :partial => "notes/3_notes", :locals => {:@job => @job} %>
       </div>
     </div>
   </div>
