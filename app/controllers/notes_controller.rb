@@ -1,4 +1,9 @@
 class NotesController < ApplicationController
+  def new
+    @note = Note.new
+    @job = Job.find(params[:job_id])
+  end
+  
   def create
     @job = Job.find(params[:job_id])
     @note = @job.notes.new(note_params)
