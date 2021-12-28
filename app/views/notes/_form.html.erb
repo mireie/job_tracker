@@ -1,0 +1,8 @@
+<%= form_with model: @note, url: job_notes_path do |form| %>
+  <h2>Note Details</h2>
+  <%= form.label :content %>
+  <%= form.text_area :content, class: 'form-control' %>
+  <div class="actions">
+    <%= form.submit class:"btn btn-primary mt-3" %>
+  </div>
+<% end %>

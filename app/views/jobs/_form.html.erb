@@ -24,8 +24,6 @@
         <%= f.text_field  :resume_url, class: "form-control" %>
         <%= f.label :submission_date %>
         <%= f.date_field  :submission_date, class: "form-control" %>
-        <%= f.label :notes %>
-        <%= f.text_area  :notes, class: "form-control" %>
         <%= f.label :status %>
         <%= f.select :status, options_for_select(["Applied", "Interviewing", "Declined", "Rejected", "Have Not Applied", "Ignored", "Other"]), {:prompt => 'Select One'}, {:class => 'form-select'}%>
       </div>

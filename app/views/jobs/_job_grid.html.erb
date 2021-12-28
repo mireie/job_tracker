@@ -28,7 +28,7 @@
             <%end%>
           </td>
           <td><a href="<%=job.resume_url%>" target="_blank">Resume</a></td>
-          <td><%= job.notes %></td>
+          <td><%= render :partial => "notes/3_notes", :locals => {:@job => job} %></td>
           <td><%= job.submission_date %></td>
           <td>
             <% if job.response_date %>
